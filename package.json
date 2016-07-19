@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -d",
     "start": "npm run build && webpack-dev-server --watch",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build -r https://${GH_TOKEN}@github.com/zhanglongyang/continuous-learning.git"
   },
   "repository": {
     "type": "git",
