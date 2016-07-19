@@ -2,8 +2,6 @@ language: node_js
 node_js:
   - 6.2.2
 script:
-  - git config --global user.email "zhanglongyang.cn@gmail.com"
-  - git config --global user.name "Longyang Zhang"
   - npm run build
   - npm run deploy
 env:
