@@ -1,8 +1,9 @@
-var webpack = require('webpack');
-var path = require('path');
+var webpack = require('webpack')
+var path = require('path')
 
-var BUILD_DIR = path.resolve(__dirname, 'build');
-var APP_DIR = path.resolve(__dirname, 'app');
+var BUILD_DIR = path.resolve(__dirname, 'build')
+var APP_DIR = path.resolve(__dirname, 'app')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var config = {
   entry: APP_DIR + '/index.jsx',
@@ -19,7 +20,8 @@ var config = {
                 loader : 'babel'
             }
         ]
-    }
-};
+    },
+    plugins: [new HtmlWebpackPlugin()]
+}
 
-module.exports = config;
+module.exports = config

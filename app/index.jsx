@@ -32,4 +32,4 @@ var RadarChart = React.createClass({
     }
 })
 
-render(<RadarChart/>, document.getElementById('app'))
+render(<RadarChart/>, document.body)
