@@ -6,7 +6,7 @@
   "scripts": {
     "build": "webpack -d",
     "start": "npm run build && webpack-dev-server --watch",
-    "deploy": "gh-pages -d build -r https://${GH_TOKEN}@${GH_REF}"
+    "deploy": "gh-pages -d build"
   },
   "repository": {
     "type": "git",
