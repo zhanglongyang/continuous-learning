@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d && webpack-dev-server --watch",
+    "build": "webpack -d",
+    "start": "npm run build && webpack-dev-server --watch",
     "deploy": "gh-pages -d build"
   },
   "repository": {
