@@ -90,7 +90,7 @@
 	    }
 	});
 	
-	(0, _reactDom.render)(_react2.default.createElement(RadarChart, null), document.getElementById('app'));
+	(0, _reactDom.render)(_react2.default.createElement(RadarChart, null), document.body);
 
 /***/ },
 /* 1 */
