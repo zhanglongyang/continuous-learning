@@ -65,7 +65,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	(0, _reactDom.render)(_react2.default.createElement(_RadarChart2.default, { data: _data2.default }), document.body);
+	(0, _reactDom.render)(_react2.default.createElement(_RadarChart2.default, { data: _data2.default }), document.getElementById('chart'));
 
 /***/ },
 /* 1 */
