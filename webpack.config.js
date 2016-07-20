@@ -21,7 +21,9 @@ var config = {
             }
         ]
     },
-    plugins: [new HtmlWebpackPlugin()]
+    plugins: [new HtmlWebpackPlugin({
+        template: 'index.html'
+    })]
 }
 
 module.exports = config
