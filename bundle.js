@@ -55,51 +55,13 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 33);
 	
-	var _reactChartjs = __webpack_require__(/*! react-chartjs */ 172);
+	var _RadarChart = __webpack_require__(/*! ./RadarChart */ 172);
+	
+	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var RadarChart = _react2.default.createClass({
-	    displayName: 'RadarChart',
-	
-	    render: function render() {
-	        var data = {
-	            labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-	            datasets: [{
-	                label: "My First dataset",
-	                fillColor: "rgba(220,220,220,0.2)",
-	                strokeColor: "rgba(220,220,220,1)",
-	                pointColor: "rgba(220,220,220,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(220,220,220,1)",
-	                data: [65, 59, 90, 81, 56, 55, 40]
-	            }, {
-	                label: "My Second dataset",
-	                fillColor: "rgba(151,187,205,0.2)",
-	                strokeColor: "rgba(151,187,205,1)",
-	                pointColor: "rgba(151,187,205,1)",
-	                pointStrokeColor: "#fff",
-	                pointHighlightFill: "#fff",
-	                pointHighlightStroke: "rgba(151,187,205,1)",
-	                data: [28, 48, 40, 19, 96, 27, 100]
-	            }]
-	        };
-	
-	        var options = {
-	            scale: {
-	                reverse: true,
-	                ticks: {
-	                    beginAtZero: true
-	                }
-	            }
-	        };
-	
-	        return _react2.default.createElement(_reactChartjs.Radar, { type: 'radar', data: data, options: options, width: '700', height: '700' });
-	    }
-	});
-	
-	(0, _reactDom.render)(_react2.default.createElement(RadarChart, null), document.body);
+	(0, _reactDom.render)(_react2.default.createElement(_RadarChart2.default, null), document.body);
 
 /***/ },
 /* 1 */
@@ -21648,36 +21610,101 @@
 
 /***/ },
 /* 172 */
+/*!***************************!*\
+  !*** ./app/RadarChart.js ***!
+  \***************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 1);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	var _reactDom = __webpack_require__(/*! react-dom */ 33);
+	
+	var _reactChartjs = __webpack_require__(/*! react-chartjs */ 173);
+	
+	var _topics = __webpack_require__(/*! ./data/topics */ 183);
+	
+	var _topics2 = _interopRequireDefault(_topics);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	var RadarChart = function (_React$Component) {
+	    _inherits(RadarChart, _React$Component);
+	
+	    function RadarChart() {
+	        _classCallCheck(this, RadarChart);
+	
+	        return _possibleConstructorReturn(this, Object.getPrototypeOf(RadarChart).apply(this, arguments));
+	    }
+	
+	    _createClass(RadarChart, [{
+	        key: 'render',
+	        value: function render() {
+	            var options = {
+	                scale: {
+	                    reverse: true,
+	                    ticks: {
+	                        beginAtZero: true
+	                    }
+	                }
+	            };
+	
+	            return _react2.default.createElement(_reactChartjs.Radar, { type: 'radar', data: _topics2.default, options: options, width: '700', height: '700' });
+	        }
+	    }]);
+	
+	    return RadarChart;
+	}(_react2.default.Component);
+	
+	exports.default = RadarChart;
+
+/***/ },
+/* 173 */
 /*!**********************************!*\
   !*** ./~/react-chartjs/index.js ***!
   \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Bar: __webpack_require__(/*! ./lib/bar */ 173),
-	  Doughnut: __webpack_require__(/*! ./lib/doughnut */ 177),
-	  Line: __webpack_require__(/*! ./lib/line */ 178),
-	  Pie: __webpack_require__(/*! ./lib/pie */ 179),
-	  PolarArea: __webpack_require__(/*! ./lib/polar-area */ 180),
-	  Radar: __webpack_require__(/*! ./lib/radar */ 181),
-	  createClass: __webpack_require__(/*! ./lib/core */ 174).createClass
+	  Bar: __webpack_require__(/*! ./lib/bar */ 174),
+	  Doughnut: __webpack_require__(/*! ./lib/doughnut */ 178),
+	  Line: __webpack_require__(/*! ./lib/line */ 179),
+	  Pie: __webpack_require__(/*! ./lib/pie */ 180),
+	  PolarArea: __webpack_require__(/*! ./lib/polar-area */ 181),
+	  Radar: __webpack_require__(/*! ./lib/radar */ 182),
+	  createClass: __webpack_require__(/*! ./lib/core */ 175).createClass
 	};
 
 
 /***/ },
-/* 173 */
+/* 174 */
 /*!************************************!*\
   !*** ./~/react-chartjs/lib/bar.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('Bar', ['getBarsAtEvent']);
 
 
 /***/ },
-/* 174 */
+/* 175 */
 /*!*************************************!*\
   !*** ./~/react-chartjs/lib/core.js ***!
   \*************************************/
@@ -21739,7 +21766,7 @@
 	    };
 	
 	    classData.initializeChart = function(nextProps) {
-	      var Chart = __webpack_require__(/*! chart.js */ 175);
+	      var Chart = __webpack_require__(/*! chart.js */ 176);
 	      var el = ReactDOM.findDOMNode(this);
 	      var ctx = el.getContext("2d");
 	      var chart = new Chart(ctx)[chartType](nextProps.data, nextProps.options || {});
@@ -21815,7 +21842,7 @@
 
 
 /***/ },
-/* 175 */
+/* 176 */
 /*!*****************************!*\
   !*** ./~/chart.js/Chart.js ***!
   \*****************************/
@@ -22132,7 +22159,7 @@
 				//Method for warning of errors
 				if (window.console && typeof window.console.warn === "function") console.warn(str);
 			},
-			amd = helpers.amd = ("function" === 'function' && __webpack_require__(/*! !webpack amd options */ 176)),
+			amd = helpers.amd = ("function" === 'function' && __webpack_require__(/*! !webpack amd options */ 177)),
 			//-- Math methods
 			isNumber = helpers.isNumber = function(n){
 				return !isNaN(parseFloat(n)) && isFinite(n);
@@ -25560,7 +25587,7 @@
 
 
 /***/ },
-/* 176 */
+/* 177 */
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
   \****************************************/
@@ -25571,64 +25598,167 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 177 */
+/* 178 */
 /*!*****************************************!*\
   !*** ./~/react-chartjs/lib/doughnut.js ***!
   \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('Doughnut', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 178 */
+/* 179 */
 /*!*************************************!*\
   !*** ./~/react-chartjs/lib/line.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('Line', ['getPointsAtEvent']);
 
 
 /***/ },
-/* 179 */
+/* 180 */
 /*!************************************!*\
   !*** ./~/react-chartjs/lib/pie.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('Pie', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 180 */
+/* 181 */
 /*!*******************************************!*\
   !*** ./~/react-chartjs/lib/polar-area.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('PolarArea', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 181 */
+/* 182 */
 /*!**************************************!*\
   !*** ./~/react-chartjs/lib/radar.js ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 174);
+	var vars = __webpack_require__(/*! ./core */ 175);
 	
 	module.exports = vars.createClass('Radar', ['getPointsAtEvent']);
 
+
+/***/ },
+/* 183 */
+/*!****************************!*\
+  !*** ./app/data/topics.js ***!
+  \****************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _toRgba = __webpack_require__(/*! to-rgba */ 184);
+	
+	var _toRgba2 = _interopRequireDefault(_toRgba);
+	
+	var _colors = __webpack_require__(/*! ./colors */ 185);
+	
+	var _colors2 = _interopRequireDefault(_colors);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+	    datasets: [{
+	        label: "My First dataset",
+	        fillColor: (0, _toRgba2.default)(_colors2.default[0], "0.1"),
+	        strokeColor: (0, _toRgba2.default)(_colors2.default[0], "1"),
+	        pointColor: (0, _toRgba2.default)(_colors2.default[0], "1"),
+	        pointStrokeColor: "#fff",
+	        pointHighlightFill: "#fff",
+	        pointHighlightStroke: (0, _toRgba2.default)(_colors2.default[0], "1"),
+	        data: [65, 59, 90, 81, 40, 55, 40]
+	    }, {
+	        label: "My Second dataset",
+	        fillColor: (0, _toRgba2.default)(_colors2.default[1], "0.1"),
+	        strokeColor: (0, _toRgba2.default)(_colors2.default[1], "1"),
+	        pointColor: (0, _toRgba2.default)(_colors2.default[1], "1"),
+	        pointStrokeColor: "#fff",
+	        pointHighlightFill: "#fff",
+	        pointHighlightStroke: (0, _toRgba2.default)(_colors2.default[1], "1"),
+	        data: [28, 48, 40, 19, 96, 27, 100]
+	    }]
+	};
+
+/***/ },
+/* 184 */
+/*!****************************!*\
+  !*** ./~/to-rgba/index.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	/**
+	 * Convert hex color to rgb.
+	 * @param  {String} hex Hex color
+	 * @return {Object}     RGB color
+	 */
+	function convertToRgb(hex) {
+	  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+	    return r + r + g + g + b + b;
+	  });
+	  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	
+	  return result ? {
+	    r: parseInt(result[1], 16),
+	    g: parseInt(result[2], 16),
+	    b: parseInt(result[3], 16)
+	  } : null;
+	}
+	
+	/**
+	 * Convert hex color to rgba.
+	 * @param  {String} hex     Hex color
+	 * @param  {Number} opacity Opacity
+	 * @return {String}         rgba() functional notation
+	 */
+	function rgba(hex, opacity) {
+	  var color = convertToRgb(hex);
+	  return color ?
+	    'rgba(' + [color.r, color.g, color.b].join(', ') + ', ' + opacity  + ')' :
+	    'NotAHex';
+	}
+	
+	exports.default = rgba;
+	module.exports = exports['default'];
+
+
+/***/ },
+/* 185 */
+/*!****************************!*\
+  !*** ./app/data/colors.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = ["#FF5733", "#FFC300", "#02FC09"];
 
 /***/ }
 /******/ ]);
