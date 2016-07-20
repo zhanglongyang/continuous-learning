@@ -4,14 +4,20 @@ import {Radar} from 'react-chartjs'
 
 export default class RadarChart extends React.Component {
     render() {
-        var {data} = this.props
-        var options = {
-            scale: {
-                reverse: true,
-                ticks: {
-                    beginAtZero: true
-                }
-            }
+        const {data} = this.props
+        const options = {
+            pointDotRadius: 6,
+            pointDotStrokeWidth: 2,
+            datasetStroke : true,
+            datasetStrokeWidth : 2,
+            legendTemplate: "Continuous Learning",
+            scaleShowLine : true,
+            angleShowLineOut : true,
+            scaleShowLabels : false,
+            scaleBeginAtZero : true,
+            angleLineColor : "rgba(0,0,0,.1)",
+            angleLineWidth : 1,
+            angleLineInterval: 1,
         }
 
         return <Radar data={data} options={options} width="700" height="700"/>
