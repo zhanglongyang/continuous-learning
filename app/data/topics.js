@@ -3,26 +3,26 @@ export default {
     datasets: [{
         name: 'Person A',
         color: '#FF0000',
-        score: [65, 59, 90, 81, 40, 55, 40]
+        score: [6, 3, 9, 8, 4, 5, 4]
     }, {
         name: 'Person B',
         color: '#00FF00',
-        score: [28, 48, 40, 19, 96, 27, 100]
+        score: [2, 4, 4, 1, 9, 2, 10]
     }, {
         name: 'Person C',
         color: '#FF00FF',
-        score: [39, 70, 59, 34, 69, 60, 89]
+        score: [3, 7, 5, 3, 6, 6, 8]
     }, {
         name: 'Person D',
         color: '#800080',
-        score: [89, 50, 16, 38, 20, 87, 50]
+        score: [8, 5, 1, 3, 2, 8, 5]
     }, {
         name: 'Person E',
         color: '#0000FF',
-        score: [30, 80, 78, 38, 60, 30, 100]
+        score: [3, 8, 7, 9, 6, 3, 10]
     }, {
         name: 'Person F',
         color: '#C0C0C0',
-        score: [69, 34, 64, 13, 68, 69, 49]
+        score: [6, 3, 6, 1, 6, 7, 5]
     }]
 }
