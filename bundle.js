@@ -55,13 +55,17 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 33);
 	
-	var _RadarChart = __webpack_require__(/*! ./RadarChart */ 172);
+	var _data = __webpack_require__(/*! ./data/data */ 172);
+	
+	var _data2 = _interopRequireDefault(_data);
+	
+	var _RadarChart = __webpack_require__(/*! ./RadarChart */ 175);
 	
 	var _RadarChart2 = _interopRequireDefault(_RadarChart);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	(0, _reactDom.render)(_react2.default.createElement(_RadarChart2.default, null), document.body);
+	(0, _reactDom.render)(_react2.default.createElement(_RadarChart2.default, { data: _data2.default }), document.body);
 
 /***/ },
 /* 1 */
@@ -21610,6 +21614,113 @@
 
 /***/ },
 /* 172 */
+/*!**************************!*\
+  !*** ./app/data/data.js ***!
+  \**************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	
+	var _toRgba = __webpack_require__(/*! to-rgba */ 173);
+	
+	var _toRgba2 = _interopRequireDefault(_toRgba);
+	
+	var _topics = __webpack_require__(/*! ./topics */ 174);
+	
+	var _topics2 = _interopRequireDefault(_topics);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	exports.default = {
+	    labels: _topics2.default.labels,
+	    datasets: _topics2.default.datasets.map(function (p) {
+	        return {
+	            label: p.name,
+	            fillColor: (0, _toRgba2.default)(p.color, "0.1"),
+	            strokeColor: (0, _toRgba2.default)(p.color, "1"),
+	            pointColor: (0, _toRgba2.default)(p.color, "1"),
+	            pointStrokeColor: "#fff",
+	            pointHighlightFill: "#fff",
+	            pointHighlightStroke: (0, _toRgba2.default)(p.color, "1"),
+	            data: p.score
+	        };
+	    })
+	};
+
+/***/ },
+/* 173 */
+/*!****************************!*\
+  !*** ./~/to-rgba/index.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	/**
+	 * Convert hex color to rgb.
+	 * @param  {String} hex Hex color
+	 * @return {Object}     RGB color
+	 */
+	function convertToRgb(hex) {
+	  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
+	  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
+	    return r + r + g + g + b + b;
+	  });
+	  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	
+	  return result ? {
+	    r: parseInt(result[1], 16),
+	    g: parseInt(result[2], 16),
+	    b: parseInt(result[3], 16)
+	  } : null;
+	}
+	
+	/**
+	 * Convert hex color to rgba.
+	 * @param  {String} hex     Hex color
+	 * @param  {Number} opacity Opacity
+	 * @return {String}         rgba() functional notation
+	 */
+	function rgba(hex, opacity) {
+	  var color = convertToRgb(hex);
+	  return color ?
+	    'rgba(' + [color.r, color.g, color.b].join(', ') + ', ' + opacity  + ')' :
+	    'NotAHex';
+	}
+	
+	exports.default = rgba;
+	module.exports = exports['default'];
+
+
+/***/ },
+/* 174 */
+/*!****************************!*\
+  !*** ./app/data/topics.js ***!
+  \****************************/
+/***/ function(module, exports) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.default = {
+	    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
+	    datasets: [{
+	        name: 'Person A',
+	        color: '#FF5733',
+	        score: [65, 59, 90, 81, 40, 55, 40]
+	    }, {
+	        name: 'Person B',
+	        color: '#02FC09',
+	        score: [28, 48, 40, 19, 96, 27, 100]
+	    }]
+	};
+
+/***/ },
+/* 175 */
 /*!***************************!*\
   !*** ./app/RadarChart.js ***!
   \***************************/
@@ -21629,11 +21740,7 @@
 	
 	var _reactDom = __webpack_require__(/*! react-dom */ 33);
 	
-	var _reactChartjs = __webpack_require__(/*! react-chartjs */ 173);
-	
-	var _topics = __webpack_require__(/*! ./data/topics */ 183);
-	
-	var _topics2 = _interopRequireDefault(_topics);
+	var _reactChartjs = __webpack_require__(/*! react-chartjs */ 176);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -21655,6 +21762,8 @@
 	    _createClass(RadarChart, [{
 	        key: 'render',
 	        value: function render() {
+	            var data = this.props.data;
+	
 	            var options = {
 	                scale: {
 	                    reverse: true,
@@ -21664,7 +21773,7 @@
 	                }
 	            };
 	
-	            return _react2.default.createElement(_reactChartjs.Radar, { type: 'radar', data: _topics2.default, options: options, width: '700', height: '700' });
+	            return _react2.default.createElement(_reactChartjs.Radar, { data: data, options: options, width: '700', height: '700' });
 	        }
 	    }]);
 	
@@ -21674,37 +21783,37 @@
 	exports.default = RadarChart;
 
 /***/ },
-/* 173 */
+/* 176 */
 /*!**********************************!*\
   !*** ./~/react-chartjs/index.js ***!
   \**********************************/
 /***/ function(module, exports, __webpack_require__) {
 
 	module.exports = {
-	  Bar: __webpack_require__(/*! ./lib/bar */ 174),
-	  Doughnut: __webpack_require__(/*! ./lib/doughnut */ 178),
-	  Line: __webpack_require__(/*! ./lib/line */ 179),
-	  Pie: __webpack_require__(/*! ./lib/pie */ 180),
-	  PolarArea: __webpack_require__(/*! ./lib/polar-area */ 181),
-	  Radar: __webpack_require__(/*! ./lib/radar */ 182),
-	  createClass: __webpack_require__(/*! ./lib/core */ 175).createClass
+	  Bar: __webpack_require__(/*! ./lib/bar */ 177),
+	  Doughnut: __webpack_require__(/*! ./lib/doughnut */ 181),
+	  Line: __webpack_require__(/*! ./lib/line */ 182),
+	  Pie: __webpack_require__(/*! ./lib/pie */ 183),
+	  PolarArea: __webpack_require__(/*! ./lib/polar-area */ 184),
+	  Radar: __webpack_require__(/*! ./lib/radar */ 185),
+	  createClass: __webpack_require__(/*! ./lib/core */ 178).createClass
 	};
 
 
 /***/ },
-/* 174 */
+/* 177 */
 /*!************************************!*\
   !*** ./~/react-chartjs/lib/bar.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('Bar', ['getBarsAtEvent']);
 
 
 /***/ },
-/* 175 */
+/* 178 */
 /*!*************************************!*\
   !*** ./~/react-chartjs/lib/core.js ***!
   \*************************************/
@@ -21766,7 +21875,7 @@
 	    };
 	
 	    classData.initializeChart = function(nextProps) {
-	      var Chart = __webpack_require__(/*! chart.js */ 176);
+	      var Chart = __webpack_require__(/*! chart.js */ 179);
 	      var el = ReactDOM.findDOMNode(this);
 	      var ctx = el.getContext("2d");
 	      var chart = new Chart(ctx)[chartType](nextProps.data, nextProps.options || {});
@@ -21842,7 +21951,7 @@
 
 
 /***/ },
-/* 176 */
+/* 179 */
 /*!*****************************!*\
   !*** ./~/chart.js/Chart.js ***!
   \*****************************/
@@ -22159,7 +22268,7 @@
 				//Method for warning of errors
 				if (window.console && typeof window.console.warn === "function") console.warn(str);
 			},
-			amd = helpers.amd = ("function" === 'function' && __webpack_require__(/*! !webpack amd options */ 177)),
+			amd = helpers.amd = ("function" === 'function' && __webpack_require__(/*! !webpack amd options */ 180)),
 			//-- Math methods
 			isNumber = helpers.isNumber = function(n){
 				return !isNaN(parseFloat(n)) && isFinite(n);
@@ -25587,7 +25696,7 @@
 
 
 /***/ },
-/* 177 */
+/* 180 */
 /*!****************************************!*\
   !*** (webpack)/buildin/amd-options.js ***!
   \****************************************/
@@ -25598,167 +25707,64 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 178 */
+/* 181 */
 /*!*****************************************!*\
   !*** ./~/react-chartjs/lib/doughnut.js ***!
   \*****************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('Doughnut', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 179 */
+/* 182 */
 /*!*************************************!*\
   !*** ./~/react-chartjs/lib/line.js ***!
   \*************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('Line', ['getPointsAtEvent']);
 
 
 /***/ },
-/* 180 */
+/* 183 */
 /*!************************************!*\
   !*** ./~/react-chartjs/lib/pie.js ***!
   \************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('Pie', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 181 */
+/* 184 */
 /*!*******************************************!*\
   !*** ./~/react-chartjs/lib/polar-area.js ***!
   \*******************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('PolarArea', ['getSegmentsAtEvent']);
 
 
 /***/ },
-/* 182 */
+/* 185 */
 /*!**************************************!*\
   !*** ./~/react-chartjs/lib/radar.js ***!
   \**************************************/
 /***/ function(module, exports, __webpack_require__) {
 
-	var vars = __webpack_require__(/*! ./core */ 175);
+	var vars = __webpack_require__(/*! ./core */ 178);
 	
 	module.exports = vars.createClass('Radar', ['getPointsAtEvent']);
 
-
-/***/ },
-/* 183 */
-/*!****************************!*\
-  !*** ./app/data/topics.js ***!
-  \****************************/
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	
-	var _toRgba = __webpack_require__(/*! to-rgba */ 184);
-	
-	var _toRgba2 = _interopRequireDefault(_toRgba);
-	
-	var _colors = __webpack_require__(/*! ./colors */ 185);
-	
-	var _colors2 = _interopRequireDefault(_colors);
-	
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-	
-	exports.default = {
-	    labels: ["Eating", "Drinking", "Sleeping", "Designing", "Coding", "Cycling", "Running"],
-	    datasets: [{
-	        label: "My First dataset",
-	        fillColor: (0, _toRgba2.default)(_colors2.default[0], "0.1"),
-	        strokeColor: (0, _toRgba2.default)(_colors2.default[0], "1"),
-	        pointColor: (0, _toRgba2.default)(_colors2.default[0], "1"),
-	        pointStrokeColor: "#fff",
-	        pointHighlightFill: "#fff",
-	        pointHighlightStroke: (0, _toRgba2.default)(_colors2.default[0], "1"),
-	        data: [65, 59, 90, 81, 40, 55, 40]
-	    }, {
-	        label: "My Second dataset",
-	        fillColor: (0, _toRgba2.default)(_colors2.default[1], "0.1"),
-	        strokeColor: (0, _toRgba2.default)(_colors2.default[1], "1"),
-	        pointColor: (0, _toRgba2.default)(_colors2.default[1], "1"),
-	        pointStrokeColor: "#fff",
-	        pointHighlightFill: "#fff",
-	        pointHighlightStroke: (0, _toRgba2.default)(_colors2.default[1], "1"),
-	        data: [28, 48, 40, 19, 96, 27, 100]
-	    }]
-	};
-
-/***/ },
-/* 184 */
-/*!****************************!*\
-  !*** ./~/to-rgba/index.js ***!
-  \****************************/
-/***/ function(module, exports) {
-
-	/**
-	 * Convert hex color to rgb.
-	 * @param  {String} hex Hex color
-	 * @return {Object}     RGB color
-	 */
-	function convertToRgb(hex) {
-	  var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
-	  hex = hex.replace(shorthandRegex, function(m, r, g, b) {
-	    return r + r + g + g + b + b;
-	  });
-	  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-	
-	  return result ? {
-	    r: parseInt(result[1], 16),
-	    g: parseInt(result[2], 16),
-	    b: parseInt(result[3], 16)
-	  } : null;
-	}
-	
-	/**
-	 * Convert hex color to rgba.
-	 * @param  {String} hex     Hex color
-	 * @param  {Number} opacity Opacity
-	 * @return {String}         rgba() functional notation
-	 */
-	function rgba(hex, opacity) {
-	  var color = convertToRgb(hex);
-	  return color ?
-	    'rgba(' + [color.r, color.g, color.b].join(', ') + ', ' + opacity  + ')' :
-	    'NotAHex';
-	}
-	
-	exports.default = rgba;
-	module.exports = exports['default'];
-
-
-/***/ },
-/* 185 */
-/*!****************************!*\
-  !*** ./app/data/colors.js ***!
-  \****************************/
-/***/ function(module, exports) {
-
-	"use strict";
-	
-	Object.defineProperty(exports, "__esModule", {
-	    value: true
-	});
-	exports.default = ["#FF5733", "#FFC300", "#02FC09"];
 
 /***/ }
 /******/ ]);
