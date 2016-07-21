@@ -21641,11 +21641,11 @@
 	        return {
 	            label: p.name,
 	            fillColor: (0, _toRgba2.default)(p.color, "0.1"),
-	            strokeColor: (0, _toRgba2.default)(p.color, "1"),
-	            pointColor: (0, _toRgba2.default)(p.color, "1"),
+	            strokeColor: p.color,
+	            pointColor: p.color,
 	            pointStrokeColor: "#fff",
 	            pointHighlightFill: "#fff",
-	            pointHighlightStroke: (0, _toRgba2.default)(p.color, "1"),
+	            pointHighlightStroke: p.color,
 	            data: p.score
 	        };
 	    })
@@ -21781,7 +21781,7 @@
 	            var data = this.props.data;
 	
 	            var options = {
-	                pointDotRadius: 6,
+	                pointDotRadius: 4,
 	                pointDotStrokeWidth: 2,
 	                datasetStroke: true,
 	                datasetStrokeWidth: 2,
