@@ -6,7 +6,7 @@ export default class RadarChart extends React.Component {
     render() {
         const {data} = this.props
         const options = {
-            pointDotRadius: 6,
+            pointDotRadius: 4,
             pointDotStrokeWidth: 2,
             datasetStroke : true,
             datasetStrokeWidth : 2,

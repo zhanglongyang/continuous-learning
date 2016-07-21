@@ -7,11 +7,11 @@ export default {
         return {
             label: p.name,
             fillColor: rgba(p.color, "0.1"),
-            strokeColor: rgba(p.color, "1"),
-            pointColor: rgba(p.color, "1"),
+            strokeColor: p.color,
+            pointColor: p.color,
             pointStrokeColor: "#fff",
             pointHighlightFill: "#fff",
-            pointHighlightStroke: rgba(p.color, "1"),
+            pointHighlightStroke: p.color,
             data: p.score
         }
     })
