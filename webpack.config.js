@@ -7,7 +7,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin')
 
 var config = {
   entry: APP_DIR + '/index.jsx',
-  publicPath: '/continuous-learning/',
+  publicPath: '/react-radar-chart-demo/',
   output: {
     path: BUILD_DIR,
         filename: 'bundle.js'

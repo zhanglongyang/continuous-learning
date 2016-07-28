@@ -1,1 +1,1 @@
-# [React Radar Chart Demo](https://zhanglongyang.github.io/continuous-learning/) [![Build Status](https://travis-ci.org/zhanglongyang/continuous-learning.svg?branch=master)](https://travis-ci.org/zhanglongyang/continuous-learning)
+# [React Radar Chart Demo](https://zhanglongyang.github.io/react-radar-chart-demo/) [![Build Status](https://travis-ci.org/zhanglongyang/react-radar-chart-demo.svg?branch=master)](https://travis-ci.org/zhanglongyang/react-radar-chart-demo)

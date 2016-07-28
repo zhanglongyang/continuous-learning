@@ -10,7 +10,7 @@ export default class RadarChart extends React.Component {
             pointDotStrokeWidth: 2,
             datasetStroke : true,
             datasetStrokeWidth : 2,
-            legendTemplate: "Continuous Learning",
+            legendTemplate: "React Radar Chart Demo",
             scaleShowLine : true,
             angleShowLineOut : true,
             scaleShowLabels : false,
